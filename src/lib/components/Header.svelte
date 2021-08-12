@@ -57,7 +57,7 @@
 	</nav>
 
 	<!-- Mobile -->
-	<div class="">
+	<div class="md:hidden">
 		<button
 			on:click={toggleMobileMenu}
 			class="relative border-2 rounded border-primary-700 text-primary-700 md:hidden"
