@@ -1,36 +1,42 @@
 <script>
 	import { onMount } from 'svelte';
-	import auth from '$lib/services/auth';
-	import { isAuthenticated, user } from '$lib/stores/auth';
-
-	let auth0Client;
-
-	onMount(async () => {
-		auth0Client = await auth.createClient();
-		isAuthenticated.set(await auth0Client.isAuthenticated());
-		user.set(await auth0Client.getUser());
-	});
-
-	function login() {
-		auth.loginWithPopup(auth0Client);
-	}
-
-	function logout() {
-		auth.logout(auth0Client);
-	}
+	import Icon, { Code, Briefcase } from 'svelte-hero-icons';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<section class="flex mt-24">
+	<div class="w-2/5">
+		<h1 class="text-5xl font-medium">Save yourself 20 hours of development time</h1>
+		<h2 class="text-4xl mt-20">The only boilerplate for your next Svelte Kit App</h2>
+		<div class="mt-20">
+			<a
+				href="/getting-started"
+				sveltekit:prefetch
+				class="btn bg-secondary-600 hover:bg-secondary-700 text-white text-2xl font-normal px-6 py-4"
+				>Start Building</a
+			>
+		</div>
+	</div>
 
-{#if $isAuthenticated}
-	<h2>Hey {$user.name}!</h2>
-	{#if $user.picture}
-		<img src={$user.picture} alt={user.name} />
-	{:else}
-		<img src="https://source.unsplash.com/random/400x300" alt="Random Photo" />
-	{/if}
-	<button on:click={logout}>Logout</button>
-{:else}
-	<button on:click={login}>Login</button>
-{/if}
+	<div class="relative w-3/5">
+		<div class=" rounded-full overflow-hidden">
+			<img src="/backpack.jpg" class="aspect-h-10 aspect-w-10" alt="Backpack" />
+		</div>
+		<span class="bg-white rounded-2xl absolute top-24 flex">
+			<div class="rounded-full grid place-items-center">
+				<div class="p-4 bg-secondary-600 rounded-full">
+					<Icon src={Code} class="h-10 w-10 text-white " />
+				</div>
+			</div>
+			<div class="text-2xl text-gray-800 p-8">Save 20 hours</div>
+		</span>
+
+		<span class="bg-white rounded-2xl absolute top-96 -right-48 flex p-8">
+			<div class="rounded-full grid place-items-center">
+				<div class="p-4 bg-primary-600 rounded-full">
+					<Icon src={Briefcase} class="h-10 w-10 text-white " />
+				</div>
+			</div>
+			<div class="text-2xl text-gray-800 p-8">Get onto Business logic faster</div>
+		</span>
+	</div>
+</section>
