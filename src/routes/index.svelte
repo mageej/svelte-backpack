@@ -19,7 +19,7 @@
 
 	<div class="relative w-3/5">
 		<div class=" rounded-full overflow-hidden">
-			<img src="/backpack.jpg" class="aspect-h-10 aspect-w-10" alt="Backpack" />
+			<img src="/backpack.png" class="aspect-h-10 aspect-w-10" alt="Backpack" />
 		</div>
 		<span class="bg-white rounded-2xl absolute top-24 flex">
 			<div class="rounded-full grid place-items-center">
