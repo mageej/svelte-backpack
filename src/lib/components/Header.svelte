@@ -127,7 +127,7 @@
 					</a>
 					<a
 						on:click={toggleMobileMenu}
-						href="/get-started"
+						href="/getting-started"
 						sveltekit:prefetch
 						class="mt-16 p-2 text-secondary-200 text-center w-1/3"
 					>

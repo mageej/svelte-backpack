@@ -1,6 +1,21 @@
 <script>
-	import { onMount } from 'svelte';
 	import Icon, { Code, Briefcase } from 'svelte-hero-icons';
+
+	let email = '';
+
+	async function handleSubmit() {
+		let body = {
+			email
+		};
+		let result = await fetch('/api/registerEmail.json', {
+			method: 'post',
+			body: JSON.stringify(body)
+		});
+		const registerEmailResponse = await result.json();
+		if (registerEmailResponse.status === 200) {
+			email = '';
+		}
+	}
 </script>
 
 <section class="flex mt-24">
@@ -8,12 +23,14 @@
 		<h1 class="text-5xl font-medium">Save yourself 20 hours of development time</h1>
 		<h2 class="text-4xl mt-20">The only boilerplate for your next Svelte Kit App</h2>
 		<div class="mt-20">
-			<a
-				href="/getting-started"
-				sveltekit:prefetch
-				class="btn bg-secondary-600 hover:bg-secondary-700 text-white text-2xl font-normal px-6 py-4"
-				>Start Building</a
-			>
+			<form on:submit|preventDefault={handleSubmit}>
+				<input type="text" bind:value={email} />
+				<button
+					type="submit"
+					class="btn bg-secondary-600 hover:bg-secondary-700 text-white text-2xl font-normal px-6 py-4"
+					>Start Building</button
+				>
+			</form>
 		</div>
 	</div>
 

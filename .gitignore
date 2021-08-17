@@ -4,3 +4,4 @@ node_modules
 /.svelte-kit
 /package
 /src/lib/config/auth_config.js
+.env
